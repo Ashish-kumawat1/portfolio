@@ -1,0 +1,420 @@
+/* ==========================================================================
+   App-specific Responsive Styling & Breakpoint Matrix
+   Targeting: Mobile (320px–480px), Phablets (481px–640px),
+              Tablets (641px–1024px), Laptops & Desktops (1025px+)
+   ========================================================================== */
+
+/* Navigation Links Styling */
+.nav-link-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 4px 0;
+}
+
+.nav-link-btn:hover {
+  color: var(--text-primary);
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  border-radius: 12px;
+  text-align: left;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  background: var(--accent-crimson-subtle);
+  color: var(--accent-crimson);
+}
+
+.mobile-nav-num {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--accent-crimson);
+  letter-spacing: 0.1em;
+}
+
+/* Base Desktop Layouts */
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  width: 100%;
+}
+
+.roots-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(32px, 5vw, 56px);
+  align-items: center;
+}
+
+.growth-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr);
+  gap: clamp(36px, 6vw, 64px);
+  align-items: center;
+}
+
+.new-branches-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: flex-start;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(36px, 6vw, 64px);
+  align-items: center;
+}
+
+/* ==========================================================================
+   The Branches Section: Desktop vs Tablet/Mobile Architecture
+   ========================================================================== */
+
+/* Desktop (> 1024px): 4 cards pinned around the central SVG tree */
+@media (min-width: 1025px) {
+  .branches-interactive-stage {
+    position: relative;
+    min-height: 680px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .branches-tree-centerpiece {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    height: 560px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .branches-tree-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .branches-cards-grid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 32px;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .branches-card-slot.slot-top-left {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .branches-card-slot.slot-top-right {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+
+  .branches-card-slot.slot-bottom-left {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  .branches-card-slot.slot-bottom-right {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .branches-cards-grid .capability-card {
+    max-width: 380px;
+  }
+}
+
+/* Tablet & Mobile (<= 1024px): Centerpiece graphic above, fluid grid of cards below */
+@media (max-width: 1024px) {
+  .branches-interactive-stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .branches-tree-centerpiece {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    height: 380px;
+    margin: 0 auto 36px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .branches-tree-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .branches-cards-grid {
+    position: static !important;
+    inset: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    width: 100% !important;
+    pointer-events: auto !important;
+  }
+
+  .branches-card-slot {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .capability-card {
+    max-width: 100% !important;
+  }
+}
+
+/* ==========================================================================
+   Breakpoints: Large Tablets & Small Laptops (<= 960px)
+   ========================================================================== */
+@media (max-width: 960px) {
+  .workflow-connecting-line {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Breakpoints: Tablets & Phablets (<= 880px)
+   ========================================================================== */
+@media (max-width: 880px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  .hero-tree-wrapper {
+    margin: 0 auto;
+    max-width: 520px;
+  }
+
+  .roots-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  .growth-grid {
+    grid-template-columns: 1fr !important;
+    gap: 44px !important;
+  }
+
+  .growth-rings-wrapper {
+    margin: 10px auto !important;
+  }
+
+  .new-branches-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+}
+
+/* ==========================================================================
+   Breakpoints: Mobile Navigation Switch (<= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-nav-actions {
+    display: flex !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   Breakpoints: Mobile Phones (<= 640px)
+   ========================================================================== */
+@media (max-width: 640px) {
+  .branches-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .branches-tree-centerpiece {
+    max-width: 250px !important;
+    height: 300px !important;
+    margin: 0 auto 24px auto !important;
+  }
+
+  .mockup-preview-box {
+    aspect-ratio: auto !important;
+    min-height: 220px !important;
+  }
+
+  .mockup-preview-box.mockup-verdant {
+    aspect-ratio: auto !important;
+  }
+
+  .mockup-preview-box.mockup-orbit {
+    aspect-ratio: auto !important;
+  }
+
+  .workflow-steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .hero-ribbon-center {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Breakpoints: Compact Phones (<= 520px)
+   ========================================================================== */
+@media (max-width: 520px) {
+  .brand-subtitle {
+    display: none !important;
+  }
+
+  .mock-hide-on-mobile {
+    display: none !important;
+  }
+
+  .mockup-orbit {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .mockup-orbit-sidebar {
+    display: none !important;
+  }
+
+  .hero-tree-motto {
+    display: none !important;
+  }
+
+  .hero-tree-controls {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    bottom: 8px !important;
+    white-space: nowrap !important;
+  }
+
+  .branch-hotspot {
+    padding: 5px 10px 5px 8px !important;
+    font-size: 0.72rem !important;
+    gap: 6px !important;
+  }
+
+  .hotspot-number {
+    font-size: 0.68rem !important;
+  }
+
+  .branch-hotspot.hotspot-capabilities {
+    right: 2% !important;
+  }
+}
+
+/* ==========================================================================
+   Breakpoints: Very Small Phones (<= 400px)
+   ========================================================================== */
+@media (max-width: 400px) {
+  .mockup-verdant-body {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .mockup-img-container {
+    height: 140px !important;
+  }
+
+  .mockup-orbit-metrics {
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 4px !important;
+  }
+
+  .service-row-desc {
+    padding-left: 20px !important;
+  }
+
+  .hero-cta-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .hero-cta-group .btn-primary,
+  .hero-cta-group .btn-secondary {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* Card hover animation enhancements */
+.mockup-preview-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08) !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
