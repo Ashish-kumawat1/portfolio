@@ -62,7 +62,7 @@ function SaplingCanvas3D() {
 
 export default function SectionContactFooter({ onOpenContact }) {
   const [copied, setCopied] = useState(false);
-  const email = 'hello@ashishkumawat.com';
+  const email = 'kumawatashish842@gmail.com';
 
   const handleCopyEmail = e => {
     e.preventDefault();
@@ -268,7 +268,7 @@ export default function SectionContactFooter({ onOpenContact }) {
               }}
             >
               <a
-                href="https://github.com"
+                href="https://github.com/Ashish-kumawat1"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -284,7 +284,7 @@ export default function SectionContactFooter({ onOpenContact }) {
               </a>
 
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/ashishkumawat-35b577304"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

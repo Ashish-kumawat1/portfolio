@@ -89,10 +89,39 @@ export default function SectionBranches() {
         <div className="branches-interactive-stage">
           {/* Central Botanical Tree Illustration (SVG) */}
           <div className="branches-tree-centerpiece">
+            <img
+              src="/tree-canopy.png"
+              alt="Illustrated tree with broad green canopy, trunk, and roots"
+              className="branches-tree-image"
+            />
             <svg
               viewBox="0 0 460 560"
               className="branches-tree-svg"
+              aria-hidden="true"
+              style={{ display: 'none' }}
+              role="img"
+              aria-label="Illustration of a branching Japanese maple tree"
             >
+              <defs>
+                <linearGradient id="tree-trunk-gradient" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0" stopColor="#2B211C" />
+                  <stop offset="0.45" stopColor="#5A4030" />
+                  <stop offset="1" stopColor="#35261F" />
+                </linearGradient>
+                <linearGradient id="tree-canopy-gradient" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stopColor="#C84A43" />
+                  <stop offset="0.55" stopColor="#9B3230" />
+                  <stop offset="1" stopColor="#702524" />
+                </linearGradient>
+                <filter id="tree-soft-shadow" x="-30%" y="-30%" width="160%" height="180%">
+                  <feGaussianBlur stdDeviation="5" />
+                </filter>
+                <path id="maple-leaf" d="M0-15 4-6 12-9 8-1 16 3 7 5 9 14 1 8-5 15-5 6-14 8-8 1-15-3-6-5Z" />
+              </defs>
+
+              {/* Soft grounding shadow */}
+              <ellipse cx="230" cy="535" rx="96" ry="12" fill="#3D2E26" opacity="0.12" filter="url(#tree-soft-shadow)" />
+
               {/* Roots */}
               <g
                 stroke={activeBranch ? '#9B3230' : '#4A3B32'}
@@ -116,11 +145,51 @@ export default function SectionBranches() {
               />
               <path
                 d="M227 460 C228 380 229 300 230 220"
-                stroke="#4F3C32"
-                strokeWidth="8"
+                stroke="url(#tree-trunk-gradient)"
+                strokeWidth="9"
                 strokeLinecap="round"
                 fill="none"
               />
+              <path d="M226 448 C228 360 225 295 231 225" stroke="#9A6C4F" strokeWidth="1.6" opacity="0.55" fill="none" />
+              <path d="M218 445 C215 385 220 330 218 290" stroke="#241B17" strokeWidth="1.2" opacity="0.4" fill="none" />
+
+              {/* New bonsai silhouette: one sculpted trunk with fine, visible branches */}
+              <g stroke="#3A2921" strokeLinecap="round" fill="none">
+                <path d="M230 225 C220 179 184 146 132 122 C112 113 92 103 70 86" strokeWidth="7" />
+                <path d="M230 214 C252 171 291 137 344 114 C365 105 383 96 400 82" strokeWidth="7" />
+                <path d="M227 198 C230 151 226 110 219 69" strokeWidth="6" />
+                <path d="M190 164 C162 148 137 145 107 147 M270 157 C301 142 327 140 357 145" strokeWidth="4" />
+                <path d="M166 139 C154 112 148 91 148 65 M294 133 C307 107 315 87 317 62" strokeWidth="4" />
+                <path d="M224 126 C205 104 190 87 175 66 M238 119 C256 94 270 78 285 56" strokeWidth="4" />
+                <path d="M121 123 C101 112 87 100 72 84 M340 113 C361 102 378 91 396 77" strokeWidth="3" />
+              </g>
+
+              <g fill="url(#tree-canopy-gradient)" stroke="#702524" strokeWidth="0.8">
+                <use href="#maple-leaf" transform="translate(67 80) rotate(-28) scale(1.05)" />
+                <use href="#maple-leaf" transform="translate(105 108) rotate(15) scale(1.2)" />
+                <use href="#maple-leaf" transform="translate(143 119) rotate(-18) scale(1.3)" />
+                <use href="#maple-leaf" transform="translate(150 64) rotate(22) scale(1.1)" />
+                <use href="#maple-leaf" transform="translate(177 70) rotate(-12) scale(1.15)" />
+                <use href="#maple-leaf" transform="translate(216 62) rotate(8) scale(1.45)" />
+                <use href="#maple-leaf" transform="translate(285 54) rotate(-18) scale(1.2)" />
+                <use href="#maple-leaf" transform="translate(318 60) rotate(20) scale(1.35)" />
+                <use href="#maple-leaf" transform="translate(344 109) rotate(-16) scale(1.25)" />
+                <use href="#maple-leaf" transform="translate(398 77) rotate(28) scale(1.1)" />
+                <use href="#maple-leaf" transform="translate(105 147) rotate(-12) scale(1.45)" />
+                <use href="#maple-leaf" transform="translate(151 145) rotate(22) scale(1.2)" />
+                <use href="#maple-leaf" transform="translate(202 116) rotate(-25) scale(1.15)" />
+                <use href="#maple-leaf" transform="translate(261 112) rotate(18) scale(1.25)" />
+                <use href="#maple-leaf" transform="translate(310 140) rotate(-20) scale(1.35)" />
+                <use href="#maple-leaf" transform="translate(357 145) rotate(18) scale(1.35)" />
+              </g>
+
+              <g fill="#EF8A73" opacity="0.65">
+                <use href="#maple-leaf" transform="translate(126 101) rotate(-20) scale(0.45)" />
+                <use href="#maple-leaf" transform="translate(218 48) rotate(12) scale(0.5)" />
+                <use href="#maple-leaf" transform="translate(330 101) rotate(20) scale(0.5)" />
+                <use href="#maple-leaf" transform="translate(157 151) rotate(-12) scale(0.45)" />
+                <use href="#maple-leaf" transform="translate(345 151) rotate(14) scale(0.45)" />
+              </g>
 
               {/* Branch connecting to Top-Left: Interfaces */}
               <path
@@ -166,44 +235,6 @@ export default function SectionBranches() {
                 style={{ transition: 'all 0.3s' }}
               />
 
-              {/* Tree Canopy Crown Branching Structure */}
-              <g stroke="#3D2E26" strokeWidth="3" strokeLinecap="round" fill="none">
-                <path d="M230 220 C220 180 180 140 160 100" />
-                <path d="M230 220 C240 180 270 140 290 100" />
-                <path d="M230 220 C230 160 230 120 230 80" />
-                <path d="M200 160 C170 150 140 120 120 90" />
-                <path d="M250 160 C280 150 310 120 330 90" />
-                <path d="M230 140 C210 110 200 80 190 60" />
-                <path d="M230 140 C250 110 260 80 270 60" />
-              </g>
-
-              {/* Red Japanese Maple Leaf Buds & Foliage Dots */}
-              {[
-                { cx: 160, cy: 100, r: 6 },
-                { cx: 290, cy: 100, r: 6 },
-                { cx: 230, cy: 80, r: 7 },
-                { cx: 120, cy: 90, r: 5 },
-                { cx: 330, cy: 90, r: 5 },
-                { cx: 190, cy: 60, r: 6 },
-                { cx: 270, cy: 60, r: 6 },
-                { cx: 230, cy: 45, r: 8 },
-                { cx: 145, cy: 125, r: 5 },
-                { cx: 305, cy: 125, r: 5 },
-                { cx: 210, cy: 110, r: 6 },
-                { cx: 250, cy: 110, r: 6 },
-                { cx: 175, cy: 80, r: 5 },
-                { cx: 285, cy: 75, r: 5 },
-              ].map((leaf, idx) => (
-                <circle
-                  key={idx}
-                  cx={leaf.cx}
-                  cy={leaf.cy}
-                  r={leaf.r}
-                  fill={activeBranch ? '#BA3431' : '#9B3230'}
-                  opacity={0.88}
-                  style={{ transition: 'all 0.3s' }}
-                />
-              ))}
             </svg>
 
             {/* Rooted Tag at Base of Tree */}

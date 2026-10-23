@@ -5,17 +5,31 @@ export default function SectionGroundwork() {
   const credentials = [
     {
       icon: GraduationCap,
-      title: 'Computer Science',
-      credential: 'B.Tech · Degree foundation',
-      description: 'Algorithms, software engineering and the fundamentals behind thoughtful applications.',
-      period: '2018–2022 / SAMPLE DEGREE',
+      title: 'Bachelor of Computer Applications',
+      credential: 'University of Rajasthan',
+      description: 'Bachelor of Computer Applications with a 7.26 CGPA, focused on software development and application engineering.',
+      period: 'AUGUST 2026 / BCA · 7.26 CGPA',
+    },
+    {
+      icon: GraduationCap,
+      title: 'PCM (Physics, Chemistry, Mathematics)',
+      credential: 'Board of Secondary Education Rajasthan',
+      description: 'Senior secondary education with a science and mathematics foundation.',
+      period: '2023 / XII',
     },
     {
       icon: Award,
-      title: 'Frontend craft',
-      credential: 'Professional learning pathway',
-      description: 'Modern React patterns, accessible interfaces and performance-first development.',
-      period: '2023 / SAMPLE CERTIFICATION',
+      title: 'Full Stack Developer',
+      credential: 'Final Exam Certification',
+      description: 'Certification demonstrating full-stack development knowledge across modern web application development.',
+      period: 'CERTIFICATION / FINAL EXAM',
+    },
+    {
+      icon: Award,
+      title: 'GenAI-Powered Data Analytics',
+      credential: 'Tata · Job Simulation',
+      description: 'Practical experience with GenAI-assisted data analytics workflows through a job simulation.',
+      period: 'TATA / JOB SIMULATION',
     },
     {
       icon: Sprout,
@@ -64,7 +78,7 @@ export default function SectionGroundwork() {
               marginTop: '8px',
             }}
           >
-            Illustrative qualifications — a place for your education, certifications and continued learning.
+            Education and certifications that form the foundation for thoughtful digital products.
           </p>
         </div>
 

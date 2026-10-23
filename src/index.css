@@ -1,3 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #FAF7F2;
+  --color-bg-secondary: #F3EFE8;
+  --color-bg-card: #FFFFFF;
+  --color-bg-dark: #13241C;
+  --color-bg-dark-surface: #1B2F25;
+  --color-bg-dark-card: #182C22;
+  --color-text-primary: #1C1917;
+  --color-text-secondary: #57524D;
+  --color-text-muted: #8A847C;
+  --color-text-light: #F7F5EE;
+  --color-text-light-secondary: #AFC3B7;
+  --color-text-light-muted: #728D7E;
+  --color-accent-crimson: #9B3230;
+  --color-accent-crimson-hover: #7E2625;
+  --color-accent-crimson-subtle: #F6EAE9;
+  --color-accent-crimson-border: #E8CAC8;
+  --color-border-light: #E7E2D7;
+  --color-border-subtle: rgba(28, 25, 23, 0.08);
+  --color-border-card: #EBE5DB;
+  --color-border-dark: rgba(255, 255, 255, 0.12);
+  --font-serif: 'Cormorant Garamond', 'Newsreader', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 8px 24px rgba(28, 25, 23, 0.05);
+  --shadow-lg: 0 16px 40px rgba(28, 25, 23, 0.08);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 :root {
   --bg-primary: #FAF7F2;
   --bg-secondary: #F3EFE8;
@@ -37,13 +69,14 @@
   --container-padding: clamp(16px, 4vw, 32px);
 }
 
-* {
+@layer base {
+  * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
+  }
 
-html {
+  html {
   scroll-behavior: smooth;
   font-size: 16px;
   background-color: var(--bg-primary);
@@ -51,63 +84,62 @@ html {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+  }
 
-body {
+  body {
   overflow-x: hidden;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   position: relative;
   width: 100%;
-}
+  }
 
-::selection {
+  ::selection {
   background-color: var(--accent-crimson-subtle);
   color: var(--accent-crimson);
+  }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D9D2C5;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #B8B0A2;
+  }
 }
 
-/* Custom subtle scrollbar */
-::-webkit-scrollbar {
-  width: 7px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-::-webkit-scrollbar-thumb {
-  background: #D9D2C5;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #B8B0A2;
-}
-
-/* Layout Utilities */
-.container {
+@layer components {
+  .container {
   width: 100%;
   max-width: 1360px;
   margin: 0 auto;
   padding: 0 var(--container-padding);
-}
+  }
 
-.section-responsive {
+  .section-responsive {
   padding: var(--section-padding) 0;
-}
+  }
 
-/* Typography elements */
-.font-serif {
+  .font-serif {
   font-family: var(--font-serif);
-}
+  }
 
-.font-mono {
+  .font-mono {
   font-family: var(--font-mono);
-}
+  }
 
-.font-sans {
+  .font-sans {
   font-family: var(--font-sans);
-}
+  }
 
-.section-label {
+  .section-label {
   font-family: var(--font-mono);
   font-size: clamp(0.7rem, 1.8vw, 0.76rem);
   letter-spacing: 0.12em;
@@ -117,13 +149,13 @@ body {
   align-items: center;
   gap: 8px;
   margin-bottom: 1.25rem;
-}
+  }
 
-.section-label.dark-mode {
+  .section-label.dark-mode {
   color: #C89B99;
-}
+  }
 
-.section-title {
+  .section-title {
   font-family: var(--font-serif);
   font-size: clamp(2.1rem, 5.2vw, 4.2rem);
   font-weight: 400;
@@ -131,11 +163,11 @@ body {
   color: var(--text-primary);
   letter-spacing: -0.02em;
   word-break: break-word;
-}
+  }
 
-.section-title.dark-mode {
+  .section-title.dark-mode {
   color: var(--text-light);
-}
+  }
 
 /* Buttons */
 .btn-primary {
@@ -322,4 +354,5 @@ body {
   z-index: 999;
   opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
 }
